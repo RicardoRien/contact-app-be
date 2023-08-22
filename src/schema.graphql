@@ -2,6 +2,54 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Role {
+  uuid: String!
+  value: String!
+  name: String!
+  status: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type SuccessReponse {
+  status: String!
+  message: String
+}
+
 type Query {
   sayHello: String!
+  roles: [Role!]!
+  role(id: Int!): Role!
+}
+
+type Mutation {
+  createUserToInstitute(args: CreateUserInput!): SuccessReponse!
+}
+
+input CreateUserInput {
+  """First name"""
+  firstname: String!
+
+  """Last name"""
+  lastname: String!
+
+  """E-mail"""
+  email: String!
+
+  """Password"""
+  password: String!
+
+  """Phone number"""
+  phone: String
+
+  """Role"""
+  role: String!
+
+  """Created By"""
+  createdBy: String!
 }

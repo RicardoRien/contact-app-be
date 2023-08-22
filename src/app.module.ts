@@ -6,6 +6,9 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AppResolver } from './app.resolver';
+import { DatabaseModule } from './database/database.module';
+import { RolesModule } from './roles/roles.module';
+import { UsersModule } from './users/users.module';
 import config from './config';
 
 @Module({
@@ -45,6 +48,9 @@ import config from './config';
         FRONTEND_URL: Joi.string().required(),
       }),
     }),
+    DatabaseModule,
+    RolesModule,
+    UsersModule,
   ],
   providers: [AppResolver],
 })
