@@ -1,4 +1,5 @@
 import { ObjectType, Field } from '@nestjs/graphql';
+
 import {
   Column,
   CreateDateColumn,
@@ -6,17 +7,11 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   DeleteDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
-import { Exclude } from 'class-transformer';
 
-import { Role } from '../../roles/entities/role.entity';
-import { Contact } from '../../contacts/entities/contact.entity';
-
-@Entity({ name: 'users' })
+@Entity({ name: 'contacts' })
 @ObjectType()
-export class User {
+export class Contact {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -38,11 +33,15 @@ export class User {
 
   @Column({ type: 'varchar', length: 255, nullable: true })
   @Field(() => String, { nullable: true })
-  phone: string;
+  location: string;
 
-  @Exclude()
+  @Column({ type: 'varchar', length: 500, nullable: true })
+  @Field(() => String, { nullable: true })
+  description: string;
+
   @Column({ type: 'varchar', length: 255, nullable: true })
-  password: string;
+  @Field(() => String, { nullable: true })
+  phone: string;
 
   @Column({ name: 'created_by', type: 'varchar', length: 255 })
   createdBy: string;
@@ -55,16 +54,6 @@ export class User {
   })
   @Field(() => String)
   refreshToken: string;
-
-  @ManyToOne(() => Role)
-  @JoinColumn({ name: 'role_id' })
-  @Field(() => Role)
-  role: Role;
-
-  @ManyToOne(() => Contact)
-  @JoinColumn({ name: 'contact_id' })
-  @Field(() => Contact)
-  contact: Contact;
 
   @Field(() => Date)
   @CreateDateColumn({
@@ -87,4 +76,4 @@ export class User {
     type: 'timestamptz',
   })
   deletedAt?: Date;
-}
+} 

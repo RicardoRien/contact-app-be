@@ -23,12 +23,10 @@ type SuccessReponse {
 
 type Query {
   sayHello: String!
-  roles: [Role!]!
-  role(id: Int!): Role!
 }
 
 type Mutation {
-  createUserToInstitute(args: CreateUserInput!): SuccessReponse!
+  createUser(args: CreateUserInput!): SuccessReponse!
 }
 
 input CreateUserInput {

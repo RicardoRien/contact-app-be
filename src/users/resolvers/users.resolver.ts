@@ -9,7 +9,7 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @Mutation(() => SuccessReponse)
-  createUserToInstitute(@Args('args') args: CreateUserInput) {
+  createUser(@Args('args') args: CreateUserInput) {
     return this.usersService.create(args);
   }
 }

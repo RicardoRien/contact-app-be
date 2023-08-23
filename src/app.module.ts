@@ -9,6 +9,7 @@ import { AppResolver } from './app.resolver';
 import { DatabaseModule } from './database/database.module';
 import { RolesModule } from './roles/roles.module';
 import { UsersModule } from './users/users.module';
+import { ContactsModule } from './contacts/contacts.module';
 import config from './config';
 
 @Module({
@@ -51,6 +52,7 @@ import config from './config';
     DatabaseModule,
     RolesModule,
     UsersModule,
+    ContactsModule,
   ],
   providers: [AppResolver],
 })

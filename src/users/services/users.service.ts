@@ -28,9 +28,10 @@ export class UsersService {
         };
       }
 
+      const role = await this.roleService.findByName(args.role);
+
       // Create user.
       const password = await bcrypt.hash(args.password, 10);
-      const role = await this.roleService.findByName(args.role);
       const user = this.userRepo.create({
         ...args,
         uuid: uuidv4(),
